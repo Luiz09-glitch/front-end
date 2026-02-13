@@ -1,20 +1,35 @@
 <!DOCTYPE html>
   <html lang="PT-BR">
-    <head>
-
-    </head>
-    <body>
-        Bom dia, esse é o primeiro codigo de html
-      <form method="POST" ACTION="index.php">
-        <fieldset>
-          <legend>
-            Primeiro formulario
-          </legend>
-          <br>
-          Usuario:<input type="text" placeholder="Usuario" minlength="5" maxlength="10" required <br>>
-          senha:  <input type="password" placeholder="Senha" minlength="5" maxlength="10" required>
-          <input type="submit" value"Cadastrar">
-        </fieldset>
-      </form>
-    </body>
+      <head>
+          <title>FrontEnd</title>
+          <meta charset="utf-8">
+          <link rel="stylesheet" type="text/css" href="">
+          <script></script>
+      </head>
+      <style>
+          .body{
+            background-color: rgb(0, 204, 255);
+          }
+          .texto{
+            color:blueviolet;
+          }
+          .submit{
+            background-color:tan
+          }
+         
+      </style>
+      <body class="body">
+          Bom dia, esse é o primeiro codigo de html
+        <form method="POST" action="index.php">
+            <fieldset>
+                <legend>
+                  Primeiro Formulario
+                </legend>
+                <br>
+                Usuario: <input type="text" placeholder="Usuario" minlength="5" maxlength="10" required><br>
+                Senha:   <input type="password" placeholder="Senha" minlength="5" maxlength="10" required><br>
+                <input type="submit" value="Registrar" class="Submit">
+            </fieldset>
+        </form>
+      </body>
   </html>
