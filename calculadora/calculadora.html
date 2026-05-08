@@ -5,33 +5,69 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        h4{
+            padding:0%;
+            color:black;
+            font-style:italic;
+            font-family:arial;
+            font-weight:600;
+            position:absolute;
+            top:-13%;
+            
+        }
+        fieldset{
+            max-width:300px;
+            height:350px;
+            border:4px solid black;
+            border-radius:17%;
+            background-color:rgb(190, 190, 190)
+        }
+        body{
+            position:relative;
+            top:200px;
+            right:-250px;
+            background-color:rgb(255, 255, 255)
+        }
         .campo{
-            background-color: yellow;
-            border:5px solid green;
+            background-color: rgb(216, 216, 216);
+            border:3px solid green;
+            width:80%;
+            height:10%;
+            position:relative;
+            left:8%
         }
         .botao{
-            width:5%;
-            height:3%;
-            background-color: rgb(139, 94, 137);
-            border:1.5px solid purple;
+            width:18%;
+            height:14%;
+            background-color: rgba(0, 3, 3, 0.61);
+            border:1.5px solid rgb(0, 0, 0);
+            cursor:pointer;
+            padding:5%;
+            border-radius:20%;
         }
         .botao2{
-            width:5%;
-            height:3%;
+            width:18%;
+            height:14%;
             background-color: rgb(37, 158, 107);
-            border:1.5px solid rgb(14, 8, 187);
+            border:1.5px solid rgb(0, 0, 0);
+            cursor:pointer;
+            border-radius:20%;
         }
         .botao3{
-            width:5%;
-            height:3%;
+            width:18%;
+            height:14%;
             background-color: rgb(178, 26, 117);
-            border:1.5px solid rgb(166, 206, 24);
+            border:1.5px solid rgb(0, 0, 0);
+            cursor:pointer;
+            border-radius:20%;
         }
         .botao4{
-            width:5%;
-            height:3%;
+            width:18%;
+            height:14%;
             background-color: rgb(178, 77, 26);
-            border:1.5px solid rgb(18, 126, 172);
+            border:1.5px solid rgb(0, 0, 0);
+            cursor:pointer;
+            border-radius:20%;
         }
     </style>
     <script>
@@ -52,8 +88,9 @@
     </script>
 </head>
 <body> 
-    <fieldset>
-        <legend>CALCULADORA DO 2ºA</legend>
+    <form>
+        <fieldset>
+            <h4>CALCULADORA DO 2ºA</h4>
         <input type="text" id="campo" class="campo float"><br><br>
         <button onclick="adicionar('1')"class="botao">1</button>
         <button onclick="adicionar('2')"class="botao">2</button>
@@ -82,5 +119,6 @@
         <button onclick="reset()"class="botao3">C</button>
         <button onclick="calcular()"class="botao4">=</button>
     </fieldset>
+</form>
 </body>
 </html>
