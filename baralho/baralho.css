@@ -1,1 +1,11 @@
+.linha01 {
+    width: 50px;
+    height: 100px;
+    border-radius: 10px;
+    border: 1px solid black;
+    display: flex;
+}
 
+.linha02 {}
+
+.linha03 {}
