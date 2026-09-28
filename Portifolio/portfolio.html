@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro de Aluno</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", Calibri, Arial, sans-serif;
+      background: #f1f3f4;
+      color: #111;
+      font-size: 14px;
+    }
+
+    .pagina {
+      max-width: 640px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 16px 12px 20px;
+      min-height: 100vh;
+    }
+
+    /* Cabeçalho */
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+    .logo svg { width: 30px; height: 30px; }
+    .logo-texto { line-height: 1; color: #1f3a70; }
+    .logo-texto span { display: block; font-size: 17px; }
+    .logo-texto strong { display: block; font-size: 17px; font-weight: 700; }
+
+    h1 {
+      text-align: center;
+      font-size: 19px;
+      font-weight: 700;
+      margin-top: 12px;
+    }
+    .subtitulo {
+      text-align: center;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+    .subtitulo svg { width: 13px; height: 13px; vertical-align: -2px; fill: #1f3a70; }
+
+    /* Seções */
+    h2 {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin: 10px 0 2px;
+    }
+
+    .linha {
+      display: grid;
+      gap: 6px 12px;
+      margin-bottom: 6px;
+    }
+    .campo { display: flex; flex-direction: column; }
+
+    label {
+      font-size: 11px;
+      margin-bottom: 1px;
+    }
+
+    input, select, textarea {
+      font: inherit;
+      font-size: 12px;
+      width: 100%;
+      height: 20px;
+      padding: 1px 6px;
+      border: 1px solid #b8c0cc;
+      border-radius: 3px;
+      background: #eef1f6;
+      color: #111;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: 2px solid #1f5fb4;
+      outline-offset: 0;
+      background: #fff;
+    }
+    textarea {
+      height: 48px;
+      resize: vertical;
+      padding: 4px 6px;
+    }
+
+    /* Grades de cada linha (seguindo as proporções da imagem) */
+    .l-nome      { grid-template-columns: 1fr 96px; }
+    .l-doc       { grid-template-columns: 98px 1fr 1fr 118px; }
+    .l-contato   { grid-template-columns: 1fr 1fr 118px; }
+    .l-endereco1 { grid-template-columns: 66px 1fr 98px 1fr; }
+    .l-endereco2 { grid-template-columns: 1fr 1fr 118px; }
+    .l-acad1     { grid-template-columns: 1fr 88px 1fr; }
+    .l-acad2     { grid-template-columns: 118px 118px 1fr; }
+    .l-resp      { grid-template-columns: 1fr 1fr; }
+
+    /* Botões */
+    .acoes {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 12px;
+    }
+    button {
+      font: inherit;
+      font-size: 11px;
+      text-transform: uppercase;
+      padding: 5px 7px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .btn-cancelar {
+      background: #fff;
+      border: 1px solid #b8c0cc;
+      color: #111;
+    }
+    .btn-salvar {
+      background: #1f5fb4;
+      border: 1px solid #1f5fb4;
+      color: #fff;
+    }
+    .btn-salvar:hover { background: #184d93; }
+
+    /* Celular */
+    @media (max-width: 560px) {
+      .linha { grid-template-columns: 1fr 1fr !important; }
+      .l-nome .campo:first-child,
+      .l-resp .campo { grid-column: 1 / -1; }
+    }
+  </style>
+</head>
+<body>
+  <main class="pagina">
+
+    <header>
+      <div class="logo">
+        <svg viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="46" fill="none" stroke="#1f3a70" stroke-width="6"/>
+          <polygon fill="#1f3a70"
+            points="50,10 61,38 92,38 67,57 76,88 50,70 24,88 33,57 8,38 39,38"/>
+          <polygon fill="#6f8fc9"
+            points="50,10 61,38 50,50 39,38"/>
+        </svg>
+        <div class="logo-texto">
+          <span>Universidade</span>
+          <strong>Nova Estrela</strong>
+        </div>
+      </div>
+
+      <h1>FICHA DE CADASTRO DO ALUNO</h1>
+      <p class="subtitulo">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2v4L12 21l7-3.8v-4L12 17l-7-3.8z"/>
+        </svg>
+        Instituição de Ensino Superior
+      </p>
+    </header>
+
+    <form onsubmit="return false;">
+
+      <!-- DADOS PESSOAIS -->
+      <h2>Dados Pessoais</h2>
+      <div class="linha l-nome">
+        <div class="campo">
+          <label for="nome">Nome Completo:</label>
+          <input type="text" id="nome" name="nome">
+        </div>
+        <div class="campo">
+          <label for="sexo">Sexo:</label>
+          <select id="sexo" name="sexo">
+            <option value=""></option>
+            <option>Masculino</option>
+            <option>Feminino</option>
+            <option>Outro</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="linha l-doc">
+        <div class="campo">
+          <label for="nascimento">Data de Nascimento:</label>
+          <input type="text" id="nascimento" name="nascimento">
+        </div>
+        <div class="campo">
+          <label for="cpf">CPF:</label>
+          <input type="text" id="cpf" name="cpf">
+        </div>
+        <div class="campo">
+          <label for="rg">RG:</label>
+          <input type="text" id="rg" name="rg">
+        </div>
+        <div class="campo">
+          <label for="nacionalidade">Nacionalidade:</label>
+          <input type="text" id="nacionalidade" name="nacionalidade">
+        </div>
+      </div>
+
+      <div class="linha l-contato">
+        <div class="campo">
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="email">
+        </div>
+        <div class="campo">
+          <label for="celular">Telefone Celular:</label>
+          <input type="tel" id="celular" name="celular">
+        </div>
+        <div class="campo">
+          <label for="residencial">Telefone Residencial:</label>
+          <input type="tel" id="residencial" name="residencial">
+        </div>
+      </div>
+
+      <!-- DADOS DE ENDEREÇO -->
+      <h2>Dados de Endereço</h2>
+      <div class="linha l-endereco1">
+        <div class="campo">
+          <label for="cep">CEP:</label>
+          <input type="text" id="cep" name="cep">
+        </div>
+        <div class="campo">
+          <label for="logradouro">Logradouro:</label>
+          <input type="text" id="logradouro" name="logradouro">
+        </div>
+        <div class="campo">
+          <label for="numero">Número:</label>
+          <input type="text" id="numero" name="numero">
+        </div>
+        <div class="campo">
+          <label for="complemento">Complemento:</label>
+          <input type="text" id="complemento" name="complemento">
+        </div>
+      </div>
+
+      <div class="linha l-endereco2">
+        <div class="campo">
+          <label for="bairro">Bairro:</label>
+          <input type="text" id="bairro" name="bairro">
+        </div>
+        <div class="campo">
+          <label for="cidade">Cidade:</label>
+          <input type="text" id="cidade" name="cidade">
+        </div>
+        <div class="campo">
+          <label for="estado">Estado:</label>
+          <select id="estado" name="estado">
+            <option value=""></option>
+            <option>AC</option><option>AL</option><option>AP</option><option>AM</option>
+            <option>BA</option><option>CE</option><option>DF</option><option>ES</option>
+            <option>GO</option><option>MA</option><option>MT</option><option>MS</option>
+            <option>MG</option><option>PA</option><option>PB</option><option>PR</option>
+            <option>PE</option><option>PI</option><option>RJ</option><option>RN</option>
+            <option>RS</option><option>RO</option><option>RR</option><option>SC</option>
+            <option>SP</option><option>SE</option><option>TO</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- DADOS ACADÊMICOS -->
+      <h2>Dados Acadêmicos</h2>
+      <div class="linha l-acad1">
+        <div class="campo">
+          <label for="curso">Curso:</label>
+          <input type="text" id="curso" name="curso">
+        </div>
+        <div class="campo">
+          <label for="matricula">Matrícula (RA):</label>
+          <input type="text" id="matricula" name="matricula">
+        </div>
+        <div class="campo">
+          <label for="ingresso">Ano/Semestre Ingresso:</label>
+          <input type="text" id="ingresso" name="ingresso">
+        </div>
+      </div>
+
+      <div class="linha l-acad2">
+        <div class="campo">
+          <label for="modalidade">Modalidade:</label>
+          <select id="modalidade" name="modalidade">
+            <option value=""></option>
+            <option>Presencial</option>
+            <option>EAD</option>
+            <option>Híbrido</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="turno">Turno:</label>
+          <select id="turno" name="turno">
+            <option value=""></option>
+            <option>Manhã</option>
+            <option>Tarde</option>
+            <option>Noite</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label for="escolaridade">Escolaridade Anterior:</label>
+          <input type="text" id="escolaridade" name="escolaridade">
+        </div>
+      </div>
+
+      <!-- DADOS DO RESPONSÁVEL -->
+      <h2>Dados do Responsável</h2>
+      <div class="linha l-resp">
+        <div class="campo">
+          <label for="responsavel">Nome do Responsável:</label>
+          <input type="text" id="responsavel" name="responsavel">
+        </div>
+        <div class="campo">
+          <label for="cpfResponsavel">CPF do Responsável:</label>
+          <input type="text" id="cpfResponsavel" name="cpfResponsavel">
+        </div>
+      </div>
+
+      <div class="campo">
+        <label for="observacoes">Observações:</label>
+        <textarea id="observacoes" name="observacoes"></textarea>
+      </div>
+
+      <div class="acoes">
+        <button type="reset" class="btn-cancelar">Cancelar</button>
+        <button type="submit" class="btn-salvar">Salvar Cadastro</button>
+      </div>
+
+    </form>
+  </main>
+</body>
+</html>
